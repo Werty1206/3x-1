@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="Num", required placeholder="Введите число">
+    <button id="btn">Построить график 3x+1</button>
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        
+       document.getElementById("btn").addEventListener("click",aCreate);
+ let i = document.getElementById("Num");
+
+        function aCreate(){
+
+        
+           k=i.value;
+            let data = [k];
+            
+            while(k!==1){
+                if (k%2===1){
+                    k=k*3+1;
+                }
+                else{
+                    k=k/2;
+                }
+                data.push(k);
+
+            }
+            a=data;
+        
+        l=[];
+        
+        b=a.length;
+        for(let s=0;s<=b;s++){
+            l.push(s);
+        }
+        console.log(a);
+        console.log(l);
+        let ctx = document.getElementById('myChart');
+        
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: l,
+            datasets: [{
+              label: '# of Votes',
+              data: a,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });}
+      </script>
+</body>
+</html>
